@@ -32,12 +32,10 @@ def create_app(test_config=None):
 
     # blueprint initialization
     from . import auth
+    from . import home
     app.register_blueprint(auth.bp)
+    app.register_blueprint(home.bp)
 
-    # a simple page that says hello
-    @app.route('/')
-    @login_required
-    def index():
-        return 'Empty Page'
+
 
     return app

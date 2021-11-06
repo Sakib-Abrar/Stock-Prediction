@@ -49,7 +49,7 @@ def register():
         error = None
 
         if not email:
-            error = 'email is required.'
+            error = 'Email is required.'
         elif not password:
             error = 'Password is required.'
 
@@ -85,7 +85,7 @@ def login():
         if user is None:
             error = 'Incorrect email.'
         elif not check_password_hash(user['password'], password):
-            error = 'Incorrect password.'
+            error = 'Incorrect password'
 
         if error is None:
             session.clear()
@@ -111,7 +111,7 @@ def forgot_password():
         ).fetchone()
 
         if user is None:
-            error = 'Incorrect answer.'
+            error = 'Incorrect answer'
 
         if error is None:
             session.clear()
@@ -132,9 +132,9 @@ def change_password(email = None):
         error = None
 
         if not email:
-            error = 'email is required.'
+            error = 'Email is required'
         elif not password:
-            error = 'Password is required.'
+            error = 'Password is required'
 
         if error is None:
             try:
@@ -158,15 +158,4 @@ def change_password(email = None):
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
-
-
-def login_required(view):
-    @functools.wraps(view)
-    def wrapped_view(**kwargs):
-        if g.user is None:
-            return redirect(url_for('auth.login'))
-
-        return view(**kwargs)
-
-    return wrapped_view
+    return redirect(url_for('auth.login'))
