@@ -16,6 +16,11 @@ function getMetaValue(meta_name) {
 }
 
 function drawChart(labels, values, legend){
+    //point background colors
+    var colors = ["rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)","rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(77, 175, 124, 1)", "rgba(255, 99, 71, 1)"];
+    var colors1 = Object.assign([], colors);
+    colors1.sort();
+
     // define the chart data
     var str = getMetaValue('labels')
     var replace= str.replace(/[\[\]]/g,'');
@@ -45,12 +50,12 @@ function drawChart(labels, values, legend){
     borderDash: [],
     borderDashOffset: 0.0,
     borderJoinStyle: 'miter',
-    pointBorderColor: "rgba(75,192,192,1)",
-    pointBackgroundColor: "#fff",
-    pointBorderWidth: 1,
+    pointBorderColor: colors,
+    pointBackgroundColor: colors,
+    pointBorderWidth: 4,
     pointHoverRadius: 5,
-    pointHoverBackgroundColor: "rgba(75,192,192,1)",
-    pointHoverBorderColor: "rgba(220,220,220,1)",
+    pointHoverBackgroundColor: colors,
+    pointHoverBorderColor: colors,
     pointHoverBorderWidth: 2,
     pointRadius: 1,
     pointHitRadius: 10,
